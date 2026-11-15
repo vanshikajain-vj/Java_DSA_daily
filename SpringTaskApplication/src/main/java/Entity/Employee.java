@@ -9,11 +9,10 @@ public class Employee {
     private Long id;
 
     private String name;
-    private String department;
-    private double salary;
 
-    public Employee() {
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     public Long getId() {
         return id;
@@ -23,11 +22,15 @@ public class Employee {
         return name;
     }
 
-    public String getDepartment() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Department getDepartment() {
         return department;
     }
 
-    public double getSalary() {
-        return salary;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
